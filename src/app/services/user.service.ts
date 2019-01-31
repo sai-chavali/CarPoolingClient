@@ -9,7 +9,7 @@ export class UserService {
   constructor(private httpClient:HttpClient) { }
 
   getUsers(){
-    return this.httpClient.get('http://172.21.26.6:8080/user/all');
+    return this.httpClient.get('http://localhost:8080/user/all');
   }
 
 }

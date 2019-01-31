@@ -11,13 +11,27 @@ export class UserProfileComponent implements OnInit,OnChanges {
   @Input() userId: Object;
 
   constructor(private httpClient:HttpClient) { }
+  save:boolean = false;
 
-  editUserDetails() {
-    this.httpClient.post('http://172.21.26.6:8080/user/details/' + this.userId,this.userDetails);
+  switchEditSave() {
+    this.save = !this.save;
+  }
+  saveUserDetails() {
+    this.httpClient.post('http://localhost:8080/user/details/' + this.userId,this.userDetails).subscribe(data  => {
+      console.log("PUT Request is successful ", data);
+      },
+      error  => {
+        console.log("Error", error); 
+      });
+    this.switchEditSave();  
+  }
+
+  deleteUser(){
+    
   }
 
   ngOnInit() {
-    this.httpClient.get('http://172.21.26.6:8080/user/details/' + this.userId).subscribe(data=>{
+    this.httpClient.get('http://localhost:8080/user/details/' + this.userId).subscribe(data=>{
       this.userDetails = data
     })
   }
