@@ -1,0 +1,42 @@
+<div class="card">
+    <div class="card-header card-header-info">
+        <h4 class="card-title">Profile</h4>
+        <p class="card-category">Edit User</p>
+    </div>
+    <div class="card-body">
+        <form>
+            <div class="row">
+                <div class="col-md-6">
+                    <mat-form-field class="example-full-width">
+                        <input matInput placeholder="Username" [(ngModel)]="userDetails.user.userName" name="x">
+                    </mat-form-field>
+                </div>
+                <div class="col-md-6">
+                    <mat-form-field class="example-full-width">
+                        <input matInput placeholder="Email address" type="email" value={{userDetails.user.email}}>
+                    </mat-form-field>
+                </div>
+            </div>
+            <div class="row" *ngFor = "let vehicle of userDetails.vehicles">
+                <div class="col-md-4">
+                    <mat-form-field class="example-full-width">
+                        <input matInput placeholder="Vehicle No" type="text" value={{vehicle.regNo}}>
+                    </mat-form-field>
+                </div>
+                <div class="col-md-4">
+                    <mat-form-field class="example-full-width">
+                        <input matInput placeholder="Vehicle Name" type="text" value={{vehicle.name}}>
+                    </mat-form-field>
+                </div>
+                <div class="col-md-4">
+                        <mat-form-field class="example-full-width">
+                            <input matInput placeholder="No.of.seats" type="text" value={{vehicle.noOfSeats}}>
+                        </mat-form-field>
+                    </div>
+            </div>
+            <button mat-raised-button type="submit" class="btn btn-primary pull-left" (click)="editUserDetails()">Save</button>
+            <button mat-raised-button type="submit" class="btn btn-danger pull-right">Delete</button>
+            <div class="clearfix"></div>
+        </form>
+    </div>
+</div>

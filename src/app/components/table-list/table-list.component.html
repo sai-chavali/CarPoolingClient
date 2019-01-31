@@ -1,0 +1,50 @@
+<div class="main-content">
+  <div class="container-fluid">
+      <div class="row">
+          <div class="col-md-12">
+              <div class="card">
+                  <div class="card-header card-header-danger">
+                      <h4 class="card-title ">Ride Table</h4>
+                      <p class="card-category">List of all rides</p>
+                  </div>
+                  <div class="card-body">
+                      <div class="table-responsive">
+                          <table class="table">
+                              <thead class=" text-primary">
+                                <td *ngFor = "let field of rideFields">{{field}}</td>
+                              </thead>
+                              <tbody>
+                                  <tr *ngFor = "let ride of rides">
+                                    <td>{{ride.source}}</td>
+                                    <td>{{ride.destination}}</td>
+                                    <td>{{ride.costPerPerson}}</td>
+                                  </tr>
+                              </tbody>
+                          </table>
+                      </div>
+                  </div>
+              </div>
+          </div>
+          <div class="col-md-12">
+              <div class="card card-plain">
+                  <div class="card-header card-header-danger">
+                      <h4 class="card-title mt-0">Vehicle Table</h4>
+                      <p class="card-category"> Here is a subtitle for this table</p>
+                  </div>
+                  <div class="card-body">
+                      <div class="table-responsive">
+                          <table class="table table-hover">
+                              <thead class="">
+                                  
+                              </thead>
+                              <tbody>
+                                  
+                              </tbody>
+                          </table>
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </div>
+</div>
