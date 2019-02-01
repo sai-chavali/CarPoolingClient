@@ -8,8 +8,11 @@ import { DashboardComponent } from '../../components/dashboard/dashboard.compone
 import { UserProfileComponent } from '../../components/user-profile/user-profile.component';
 import { TableListComponent } from '../../components/table-list/table-list.component';
 import { MapsComponent } from '../../components/maps/maps.component';
-import { NotificationsComponent } from '../../components/notifications/notifications.component';
 import { UsersListComponent } from '../../components/users-list/users-list.component';
+import { PieChartComponent } from '../../components/pie-chart/pie-chart.component';
+import { DownlaodcsvComponent } from '../../components/downlaodcsv/downlaodcsv.component';
+import { ChartsModule } from 'ng2-charts';
+import { Angular2CsvModule } from 'angular2-csv';
 
 import {
   MatButtonModule,
@@ -33,6 +36,8 @@ import {
     MatInputModule,
     MatSelectModule,
     MatInputModule,
+    Angular2CsvModule,
+    ChartsModule,
     MatTooltipModule,
   ],
   declarations: [
@@ -41,7 +46,8 @@ import {
     UserProfileComponent,
     TableListComponent,
     MapsComponent,
-    NotificationsComponent,
+    DownlaodcsvComponent,
+    PieChartComponent, 
     UsersListComponent
   ]
 })

@@ -1,50 +1,110 @@
 <div class="main-content">
-  <div class="container-fluid">
-      <div class="row">
-          <div class="col-md-12">
-              <div class="card">
-                  <div class="card-header card-header-danger">
-                      <h4 class="card-title ">Ride Table</h4>
-                      <p class="card-category">List of all rides</p>
-                  </div>
-                  <div class="card-body">
-                      <div class="table-responsive">
-                          <table class="table">
-                              <thead class=" text-primary">
-                                <td *ngFor = "let field of rideFields">{{field}}</td>
-                              </thead>
-                              <tbody>
-                                  <tr *ngFor = "let ride of rides">
-                                    <td>{{ride.source}}</td>
-                                    <td>{{ride.destination}}</td>
-                                    <td>{{ride.costPerPerson}}</td>
-                                  </tr>
-                              </tbody>
-                          </table>
-                      </div>
-                  </div>
-              </div>
-          </div>
-          <div class="col-md-12">
-              <div class="card card-plain">
-                  <div class="card-header card-header-danger">
-                      <h4 class="card-title mt-0">Vehicle Table</h4>
-                      <p class="card-category"> Here is a subtitle for this table</p>
-                  </div>
-                  <div class="card-body">
-                      <div class="table-responsive">
-                          <table class="table table-hover">
-                              <thead class="">
-                                  
-                              </thead>
-                              <tbody>
-                                  
-                              </tbody>
-                          </table>
-                      </div>
-                  </div>
-              </div>
-          </div>
-      </div>
-  </div>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-header card-header-danger">
+                        <h4 class="card-title ">Ride Table</h4>
+                        <p class="card-category" style="display: inline;">List of all rides</p>
+                        <div class="pull-right"><app-downlaodcsv></app-downlaodcsv></div>
+                    </div>
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <table class="table">
+                                <thead class=" text-primary">
+                                    <td *ngFor="let field of rideFields">{{field}}</td>
+                                </thead>
+                                <tbody>
+                                    <tr *ngFor="let ride of rides;let i=index">
+                                        <td>{{ride.driverName}}</td>
+                                        <td>{{ride.source}}</td>
+                                        <td>{{ride.destination}}</td>
+                                        <td>{{ride.costPerPerson}}</td>
+                                        <td>{{ride.seatsAvailable}}</td>
+                                        <td>{{ride.rideDate}}</td>
+                                        <td><button data-toggle="modal"
+                                                data-target="#exampleModalCenter" style="border:none;cursor: pointer;background: none;"
+                                                (click)="editRide(i)"><i class="material-icons">edit</i></button></td>
+                                        <td><button style="border:none;cursor: pointer;background: none;" (click)="deleteRide(i)"><i
+                                                    class="material-icons">delete</i></button></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+                        aria-hidden="true">
+                        <div class="modal-dialog modal-dialog-centered" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="exampleModalLongTitle">Edit Ride</h5>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                <div class="modal-body">
+                                        <div class="row">
+                                                <div class="col-md-6">
+                                                    <mat-form-field class="example-full-width">
+                                                        <input matInput placeholder="Username">
+                                                    </mat-form-field>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <mat-form-field class="example-full-width">
+                                                        <input matInput placeholder="Email address" type="email">
+                                                    </mat-form-field>
+                                                </div>
+                                            </div>
+                                                <div class="col-md-4">
+                                                    <mat-form-field class="example-full-width">
+                                                        <input matInput placeholder="Vehicle No" type="text">
+                                                    </mat-form-field>
+                                                </div>
+                                                <div class="col-md-4">
+                                                    <mat-form-field class="example-full-width">
+                                                        <input matInput placeholder="Vehicle Name" type="text">
+                                                    </mat-form-field>
+                                                </div>
+                                                <div class="col-md-2">
+                                                        <mat-form-field class="example-full-width">
+                                                            <input matInput placeholder="No.of.seats" type="text">
+                                                        </mat-form-field>
+                                                    </div>  
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                    <button type="button" class="btn btn-primary">Save changes</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-12">
+            <div class="card card-plain">
+                <div class="card-header card-header-danger">
+                    <h4 class="card-title mt-0">Bookings Table</h4>
+                    <p class="card-category">Bookings so-far in this month</p>
+                </div>
+                <div class="card-body">
+                    <div class="table-responsive">
+                        <table class="table table-hover">
+                            <thead class="">
+                                <td *ngFor="let field of bookingFields">{{field}}</td>
+                            </thead>
+                            <tbody>
+                                <tr *ngFor = "let booking of bookings">
+                                            <td>{{booking.driverName}}</td>
+                                            <td>{{booking.noOfSeats}}</td>
+                                            <td>{{booking.userName}}</td>
+                                            <td>{{booking.rideDate | date}}</td>
+                                    </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
