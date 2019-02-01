@@ -1,0 +1,35 @@
+<p>
+  wallet works!
+</p>
+<h1>{{money}}</h1>
+
+<!-- To Add Money -->
+
+<form class="form-inline" (ngSubmit)="onAddMoney(f)" #f="ngForm">
+  <div class="form-group">
+    <label for="email">Enter Money:</label>
+    <input type="text" class="form-control" placeholder="Enter Money" name="money" ngModel>
+  </div>
+  <div class="form-group">
+    <label for="pwd">w_id:</label>
+    <input type="text" class="form-control" placeholder="Enter w_id" name="w_id" ngModel>
+  </div>
+  <button type="submit" class="btn btn-primary">Add Money</button>
+</form>
+
+<!-- To Display Money -->
+<form class="form-inline" (ngSubmit)="onMoney(f1)" #f1="ngForm">
+  <div class="form-group">
+    <input type = "text" class="form-control" placeholder="W_ID" name="w_id" ngModel>
+  </div>
+  <button type="submit" class="btn btn-primary" >Get Money</button>
+</form>
+
+<!-- To Get the Invoice -->
+<form class="form-inline" (ngSubmit)="onInvoice()">
+  <button type="submit" class="btn btn-primary">Get Invoice</button>
+</form>
+
+
+
+

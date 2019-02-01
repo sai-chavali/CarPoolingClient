@@ -1,0 +1,69 @@
+<mat-card>
+    <form (ngSubmit)="onSubmit()" [formGroup]="formGroup" #rideCreationForm="ngForm">
+      <!-- <p>
+        <mat-form-field appearance="outline">
+          <mat-label>Source</mat-label>
+          <input matInput placeholder="Source" />
+      </mat-form-field>
+    </p>
+    <p>
+      <mat-form-field appearance="outline">
+        <mat-label>Destination</mat-label>
+        <input matInput placeholder="Destination" />
+      </mat-form-field>
+    </p> -->
+    
+    <p>
+      <mat-form-field class="example-full-width" appearance="fill">
+        <mat-label>Source</mat-label>
+        <input ngDefaultControl [formControl]="rideSource"  type="text" placeholder="Source" aria-label="Number" matInput [formControl]="formControl"
+        [matAutocomplete]="autoSource" required>
+        <mat-autocomplete   #autoSource="matAutocomplete">
+          <mat-option *ngFor="let location of filteredLocations | async" [value]="location">
+            {{location}}
+          </mat-option>
+        </mat-autocomplete>
+      </mat-form-field>
+    </p>
+    
+    <p>
+      <mat-form-field class="example-full-width" appearance="fill">
+        <mat-label>Destination</mat-label>
+        <input ngDefaultControl [formControl]="rideDestination" type="text" placeholder="Destination" aria-label="Number" matInput [formControl]="formControl"
+        [matAutocomplete]="autoDestination" required>
+        <mat-autocomplete  #autoDestination="matAutocomplete">
+          <mat-option *ngFor="let location of filteredLocations | async" [value]="location">
+            {{location}}
+          </mat-option>
+        </mat-autocomplete>
+      </mat-form-field>
+    </p>
+    
+    
+    <p>
+      <mat-form-field appearance="fill">
+        <mat-label>Cost Per Person</mat-label>
+        <input ngDefaultControl [formControl]="costPerPerson" matInput type="number" placeholder="Cost Per Person" required/>
+      </mat-form-field>
+    </p>
+    
+    <p>
+      <select required ngDefaultControl  [formControl]="vehicleObj" style="width:200px" placeholder="Pick Vehicle">
+          <option *ngFor="let vehicle of (vehicleList$ | async)" [ngValue]="vehicle">
+            {{ vehicle.name }}
+          </option>
+        </select>
+      </p>
+      
+      <p>
+        <mat-form-field appearance="fill">
+          <input required ngDefaultControl matInput [formControl]="rideDate" [min]="minDate" [max]="maxDate" [matDatepicker]="picker" placeholder="Choose a date">
+          <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+          <mat-datepicker #picker></mat-datepicker>
+        </mat-form-field>
+      </p>
+      
+      
+      <button mat-button type="submit" class="btn">Submit</button>
+    </form>
+  </mat-card>
