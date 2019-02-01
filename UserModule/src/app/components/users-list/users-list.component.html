@@ -1,0 +1,29 @@
+<div class="main-content">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-md-4">
+        <div class="card">
+          <div class="card-header">
+            <h4 class="card-title ">User Details</h4>
+            <p class="card-category">List of all users</p>
+            <mat-form-field>
+                <input matInput [(ngModel)]="searchUser" placeholder="Search for user">
+                <!-- <mat-icon class="pull-right">search</mat-icon> -->
+            </mat-form-field>
+          </div>
+          <div class="card-body">
+            <div class="table-responsive">
+              <table class="table">
+                <tr *ngFor="let user of users | filter: searchUser;let i=index"><button style="border:none;cursor: pointer;background: none;"
+                    (click)="showDetails(user.userId)">{{user.userName }}</button></tr>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-8" *ngIf="showDetail">
+        <app-user-profile [userId]="showuserId"></app-user-profile>
+      </div>
+    </div>
+  </div>
+</div>
